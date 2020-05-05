@@ -1,6 +1,6 @@
 #' Calculate Normal Distribution or Gaussian Peak
 #'
-#' Calculates either a normal distribution similar to [dnorm()] with an
+#' Calculates either a normal distribution similar to dnorm() with an
 #' integrated area of 1 or a gaussian peak with amplitude k
 #'
 #' @param x a vector of x-coordinates from which the corrisponding y-coordinates

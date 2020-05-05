@@ -9,7 +9,7 @@
 #' @param sigma the standard deviation
 #' @param probDensity Should the function produce a probability density function
 #'   `TRUE` or a gaussian peak `FALSE` with amplitude k? default is `TRUE`.
-#' @param k Amplitude of the gaussian peak. Only used when `probDensity == TRUE`
+#' @param k Amplitude of the peak. Only used when `probDensity == FALSE`
 #' @param weights weighting vector to augment the gaussian shape profile
 #'
 #' @return a vector of y-coordinates the same length as x
