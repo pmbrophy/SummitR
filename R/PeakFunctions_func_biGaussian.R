@@ -1,13 +1,15 @@
 #' Calculate a Bi-Gaussian Probability Density or Peak
 #'
+#' The left side gaussian is calculated with sigma 1 along Y up to the value <
+#' mu. The remaining right side of the gaussian is calculated with sigma2
+#'
 #' @param x a vector of x-coordinates from which the corrisponding y-coordinates
 #'   are calculated
 #' @param mu the center of the peak
 #' @param sigma1 the standard deviation of the left side gaussian component
 #' @param sigma2 the standard deviation of the right side gaussian component
 #' @param probDensity Should the function return a probability density `TRUE` or
-#'   an exponentially modified gaussian peak `FALSE` with amplitude k? default
-#'   is `TRUE`.
+#'   a bigaussian peak `FALSE` with amplitude k? default is `TRUE`.
 #' @param k Amplitude of the peak. Only used when `probDensity == FALSE`
 #'
 #' @return a vector of y-coordinates the same length as x with names "1" and "2"
@@ -15,12 +17,12 @@
 #' @export
 #'
 #' @examples
-#' #Probability density of exponentially modified gaussian
+#' #Probability density of bigaussian
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
 #' pdist <- func_biGaussian(x = xVec, mu = 10, sigma1 = 1, sigma2 = 2, probDensity = TRUE)
 #' plot(x = xVec, y = pdist, col = names(yVec))
 #'
-#' #Exponentially modified gaussian peak
+#' #bigaussian peak
 #' gpeak <- func_biGaussian(x = xVec, mu = 10, sigma1 = 1, sigma2 = 2, probDensity = FALSE, k = 10)
 #' plot(x = xVec, y = gpeak, col = names(yVec))
 #'
