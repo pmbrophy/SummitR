@@ -4,7 +4,7 @@ library(DescTools)
 test_that("func_gaussian returns correct data formats when used to generate probability distribution", {
   xVec <- seq(from = 1, to = 100, by = 0.1)
 
-  pdist <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = T)
+  pdist <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = TRUE)
   area <- AUC(x = xVec, y = pdist, from = 1, to = 100)
 
   expect_vector(pdist)
@@ -16,9 +16,9 @@ test_that("func_gaussian returns correct data formats when used to generate prob
 test_that("func_gaussian returns correct data formats when used to generate gaussian peak", {
   xVec <- seq(from = 1, to = 100, by = 0.1)
 
-  expect_error(func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = F))
+  expect_error(func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = FALSE))
 
-  gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = F, k = 10)
+  gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = FALSE, k = 10)
 
   expect_vector(gpeak)
   expect_equal(length(xVec), length(gpeak))
