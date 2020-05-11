@@ -19,6 +19,32 @@ fit_nGaussian_optim(x, y, init_mus, init_ks, constant_sigma, maxit = 1000)
 
 \item{maxit}{maximum number of iterations (default = 1000)}
 }
+\value{
+a list containing a vector of y-values of the fitted peak called
+  `fitPeak` and a list named `optimResult` containing the results from
+  optim()
+}
 \description{
 Fit N-Gaussian Peaks Using quasi-Newtonian optomization method with boxed constraints
+}
+\examples{
+xVec <- seq(from = 1, to = 100, by = 0.1)
+gauss <- multi_gaussian(x = xVec,
+                        mus = c(10, 20, 30),
+                        sigmas = c(1, 1, 1),
+                        probDensity = FALSE,
+                        k = c(10, 15, 20))
+
+gauss <- gauss + rnorm(n = length(gauss), mean = 0, sd = 1)
+
+fit <- fit_nGaussian_optim(x = xVec,
+                           y = gauss,
+                           init_mus = c(9, 21, 32),
+                           constant_sigma =  1,
+                           init_ks = c(11, 12, 13),
+                           maxit = 10000)
+
+plot(x = xVec, y = gauss)
+points(x = xVec, y = fit$fitPeak, col = "red")
+
 }

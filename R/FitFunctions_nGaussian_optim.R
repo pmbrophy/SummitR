@@ -7,17 +7,30 @@
 #' @param constant_sigma a constand value for sigma to be applied to each of the N-peaks
 #' @param maxit maximum number of iterations (default = 1000)
 #'
-#' @returna list containing a vector of y-values of the fitted peak called
+#' @return a list containing a vector of y-values of the fitted peak called
 #'   `fitPeak` and a list named `optimResult` containing the results from
 #'   optim()
 #'
 #' @export
 #' @examples
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
-#' gauss <- multi_gaussian(x = xVec, mus = c(10, 20, 30), sigmas = c(1, 1, 1), probDensity = FALSE, k = c(10, 15, 20))
+#' gauss <- multi_gaussian(x = xVec,
+#'                         mus = c(10, 20, 30),
+#'                         sigmas = c(1, 1, 1),
+#'                         probDensity = FALSE,
+#'                         k = c(10, 15, 20))
+#'
 #' gauss <- gauss + rnorm(n = length(gauss), mean = 0, sd = 1)
-#' fit <- fit_nGaussian_optim(x = xVec, y = gauss, init_mus = c(9, 21, 32), constant_sigma =  1, init_ks = c(11, 12, 13), maxit = 10000)
-#' plot(x = xVec, y = gauss); points(x = xVec, y = gauss$fitPeak, col = "red)
+#'
+#' fit <- fit_nGaussian_optim(x = xVec,
+#'                            y = gauss,
+#'                            init_mus = c(9, 21, 32),
+#'                            constant_sigma =  1,
+#'                            init_ks = c(11, 12, 13),
+#'                            maxit = 10000)
+#'
+#' plot(x = xVec, y = gauss)
+#' points(x = xVec, y = fit$fitPeak, col = "red")
 #'
 
 fit_nGaussian_optim <- function(x, y, init_mus, init_ks, constant_sigma, maxit = 1000){
@@ -53,11 +66,11 @@ fit_nGaussian_optim <- function(x, y, init_mus, init_ks, constant_sigma, maxit =
   lower_par <- rep(x = 0, times = length(initial_par))
 
   #Do the fit
-  result <- optim(par = initial_par,
-                  fn = f,
-                  method = "L-BFGS-B",
-                  lower = c(0,0,0),
-                  control = list("maxit" = maxit))
+  result <- stats::optim(par = initial_par,
+                         fn = f,
+                         method = "L-BFGS-B",
+                         lower = c(0,0,0),
+                         control = list("maxit" = maxit))
 
   #Make the resutant peak
   numParams <- length(result$par)

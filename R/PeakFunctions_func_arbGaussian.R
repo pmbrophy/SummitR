@@ -16,16 +16,12 @@
 #' @export
 #'
 #' @examples
-#' #normal distribution
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
-#' pdensity <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = T)
-#' p1 <- plot(x = xVec, y = pdensity)
-#'
-#' #gaussian peak
-#' gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = F, k = 10)
-#' p2 <- plot(x = xVec, y = gpeak)
-#'
-#' #See also: dnorm()
+#' weights <- rep(x = 1, times = length(xVec))
+#' weights[490:510] <- 0.1
+#' pdist <- func_arbGaussian(x = xVec, mu = 50, sigma = 1, probDensity = TRUE, weights = weights)
+#' plot(xVec, pdist)
+
 func_arbGaussian <- function(x, mu, sigma, probDensity, k, weights){
   if(probDensity){
     k <- (1/(sigma*sqrt(2*pi)))

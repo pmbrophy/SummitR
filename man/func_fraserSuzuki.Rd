@@ -2,7 +2,7 @@
 % Please edit documentation in R/PeakFunctions_func_fraserSuzuki.R
 \name{func_fraserSuzuki}
 \alias{func_fraserSuzuki}
-\title{Calculate Normal Distribution or Gaussian Peak}
+\title{Calculate Fraser-Suzuki Peak Model}
 \usage{
 func_fraserSuzuki(x, mu, sigma, a, probDensity = TRUE, k)
 }
@@ -30,13 +30,13 @@ Calculates either a probability density function using the Fraser-Suzuki
 model with an integrated area of 1 or a peak with amplitude k
 }
 \examples{
-#normal distribution
+#Probability Density
 xVec <- seq(from = 1, to = 100, by = 0.1)
-pdensity <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = T)
+pdensity <- func_fraserSuzuki(x = xVec, mu = 10, sigma = 1, a = 1, probDensity = TRUE)
 p1 <- plot(x = xVec, y = pdensity)
 
-#gaussian peak
-gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = F, k = 10)
+#Fraser-Suzuki peak
+gpeak <- func_fraserSuzuki(x = xVec, mu = 10, sigma = 1, a = -1, probDensity = TRUE)
 p2 <- plot(x = xVec, y = gpeak)
 
 #See also: dnorm()

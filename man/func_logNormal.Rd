@@ -17,24 +17,23 @@ are calculated}
 \item{probDensity}{Should the function produce a probability density function
 `TRUE` or a gaussian peak `FALSE` with amplitude k? default is `TRUE`.}
 
-\item{k}{Amplitude of the peak. Only used when `probDensity == FALSE`}
+\item{k}{Amplitude of the peak multiplied by 1/x to form pre-exponential term. Only used when `probDensity == FALSE`}
 }
 \value{
 a vector of y-coordinates the same length as x
 }
 \description{
-Calculates either a normal distribution with an
-integrated area of 1 or a gaussian peak with amplitude k
+Calculates either a log-normal distribution with an
+integrated area of 1 or a log-normal peak with amplitude k
 }
 \examples{
-#normal distribution
+#log-normal distribution
 xVec <- seq(from = 1, to = 100, by = 0.1)
-pdensity <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = T)
+pdensity <- func_logNormal(x = xVec, mu = 10, sigma = 1, probDensity = TRUE)
 p1 <- plot(x = xVec, y = pdensity)
 
-#gaussian peak
-gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = F, k = 10)
+#log-normal peak
+gpeak <- func_logNormal(x = xVec, mu = 10, sigma = 1, probDensity = FALSE, k = 10)
 p2 <- plot(x = xVec, y = gpeak)
 
-#See also: dnorm()
 }

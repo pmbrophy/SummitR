@@ -26,18 +26,14 @@ a vector of y-coordinates the same length as x
 Calculates either a normal distribution similar to dnorm() with an
 integrated area of 1 or a gaussian peak with amplitude k
 }
-\details{
-
-}
 \examples{
 #normal distribution
 xVec <- seq(from = 1, to = 100, by = 0.1)
-pdensity <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = T)
+pdensity <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = TRUE)
 p1 <- plot(x = xVec, y = pdensity)
 
 #gaussian peak
-gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = F, k = 10)
+gpeak <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = FALSE, k = 10)
 p2 <- plot(x = xVec, y = gpeak)
 
-#See also: dnorm()
 }

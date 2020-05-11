@@ -8,5 +8,5 @@ Description: Provides a set of tools for various peak fitting problems.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat, Rfast, pracma, data.table
 RoxygenNote: 7.1.0
+Imports:  stats, testthat, vctrs, Rfast, pracma, DescTools, GA

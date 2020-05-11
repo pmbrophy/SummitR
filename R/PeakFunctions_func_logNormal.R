@@ -17,11 +17,11 @@
 #' @examples
 #' #log-normal distribution
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
-#' pdensity <- func_logNormal(x = xVec, mu = 10, sigma = 1, probDensity = T)
+#' pdensity <- func_logNormal(x = xVec, mu = 10, sigma = 1, probDensity = TRUE)
 #' p1 <- plot(x = xVec, y = pdensity)
 #'
 #' #log-normal peak
-#' gpeak <- func_logNormal(x = xVec, mu = 10, sigma = 1, probDensity = F, k = 10)
+#' gpeak <- func_logNormal(x = xVec, mu = 10, sigma = 1, probDensity = FALSE, k = 10)
 #' p2 <- plot(x = xVec, y = gpeak)
 #'
 

@@ -17,10 +17,25 @@
 #'
 #' @examples
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
-#' pdist <- multi_lorentzian(x = xVec, x0s = c(5, 10, 15), gammas = c(1, 2, 4), probDensity = TRUE, returnComponentPks = FALSE)
-#' p1 <- plot(x = xVec, y = pdist)
-#' lpeak_components <- multi_lorentzian(x = xVec, x0s = c(5, 10, 15), gammas = c(1, 2, 4), probDensity = FALSE, returnComponentPks = TRUE, ks = c(1, 5, 10))
-#' p2 <- plot(x = lpeak_components$x, y = lpeak_components$peak_sum);points(x = lpeak_components$x, y = lpeak_components$peak_1, col = "red");points(x = lpeak_components$x, y = lpeak_components$peak_2, col = "blue");points(x = lpeak_components$x, y = lpeak_components$peak_3, col = "green")
+#' pdist <- multi_lorentzian(x = xVec,
+#'                           x0s = c(5, 10, 15),
+#'                           gammas = c(1, 2, 4),
+#'                           probDensity = TRUE,
+#'                           returnComponentPks = FALSE)
+#'
+#' plot(x = xVec, y = pdist)
+#'
+#' lpeak_components <- multi_lorentzian(x = xVec,
+#'                                      x0s = c(5, 10, 15),
+#'                                      gammas = c(1, 2, 4),
+#'                                      probDensity = FALSE,
+#'                                      returnComponentPks = TRUE,
+#'                                      ks = c(1, 5, 10))
+#'
+#' plot(x = lpeak_components$x, y = lpeak_components$peak_sum)
+#' points(x = lpeak_components$x, y = lpeak_components$peak_1, col = "red")
+#' points(x = lpeak_components$x, y = lpeak_components$peak_2, col = "blue")
+#' points(x = lpeak_components$x, y = lpeak_components$peak_3, col = "green")
 #'
 
 multi_lorentzian <- function(x, x0s, gammas, probDensity, returnComponentPks = FALSE, ks){

@@ -29,3 +29,16 @@ a list containing a vector of y-values of the fitted peak called
 Fit a Gaussian Peak Using quasi-Newtonian optomization method with boxed
 constraints
 }
+\examples{
+xVec <- seq(from = 1, to = 100, by = 0.1)
+gauss <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = FALSE, k = 10)
+gauss <- gauss + rnorm(n = length(gauss), mean = 0, sd = 1)
+fit <- fit_gaussian_optim(x = xVec,
+                          y = gauss,
+                          init_mu = 9,
+                          init_sigma = 0.5,
+                          init_k = 3,
+                          maxit = 1000)
+plot(x = xVec, y = gauss); points(x = xVec, y = fit$fitPeak, col = "red")
+
+}

@@ -34,14 +34,14 @@ fit_gaussian_nlm <- function(x, y, init_mu, init_sigma, init_k){
   lower_par <- c("mu" = 0, "sigma" = 0, "k" = 0)
 
   #Do the fit
-  result <- nls(formula = y ~ k*exp(-0.5*((x-mu)/sigma)^2),
-                data = df,
-                start = initial_par,
-                lower = lower_par,
-                algorithm = "port")
+  result <- stats::nls(formula = y ~ k*exp(-0.5*((x-mu)/sigma)^2),
+                       data = df,
+                       start = initial_par,
+                       lower = lower_par,
+                       algorithm = "port")
 
   #Extract information
-  result_coefs <- coef(result)
+  result_coefs <- stats::coef(result)
 
   peak <- func_gaussian(x = x,
                         mu = result_coefs["mu"],

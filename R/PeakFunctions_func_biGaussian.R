@@ -20,11 +20,11 @@
 #' #Probability density of bigaussian
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
 #' pdist <- func_biGaussian(x = xVec, mu = 10, sigma1 = 1, sigma2 = 2, probDensity = TRUE)
-#' plot(x = xVec, y = pdist, col = names(yVec))
+#' plot(x = xVec, y = pdist, col = names(pdist))
 #'
 #' #bigaussian peak
 #' gpeak <- func_biGaussian(x = xVec, mu = 10, sigma1 = 1, sigma2 = 2, probDensity = FALSE, k = 10)
-#' plot(x = xVec, y = gpeak, col = names(yVec))
+#' plot(x = xVec, y = gpeak, col = names(gpeak))
 #'
 
 func_biGaussian <- function(x, mu, sigma1, sigma2, probDensity = TRUE, k){

@@ -15,7 +15,13 @@
 #' @export
 #'
 #' @examples
+#' xVec <- seq(from = 1, to = 100, by = 0.1)
+#' pdensity <- func_pseudoVoigt(x = xVec, mu = 10, sigma = 1, gamma = 1.5, probDensity = TRUE)
+#' p1 <- plot(x = xVec, y = pdensity)
 #'
+#' #Pseudo-Voigt Peak
+#' pdensity <- func_pseudoVoigt(x = xVec, mu = 10, sigma = 1, gamma = 1.5, probDensity = FALSE, k = 10)
+#' p2 <- plot(x = xVec, y = pdensity)
 
 func_pseudoVoigt <- function(x, sigma, gamma, mu, probDensity, k){
   #Calculate gaussian and lorentzian peaks
@@ -31,6 +37,11 @@ func_pseudoVoigt <- function(x, sigma, gamma, mu, probDensity, k){
   f <- f^(1/5)
 
   nu <- (1.36603 * (fwhm_l/f)) - (0.47719 * (fwhm_l/f)^2) + (0.11116 * (fwhm_l/f)^3)
+
+  #nu is only valid between 0 and 1
+  if(nu < 0 | nu > 1){
+    stop(paste0("nu must be between 0 and 1. nu =", nu))
+  }
 
   peak <- (nu * l) + ((1 - nu) * g)
   peak

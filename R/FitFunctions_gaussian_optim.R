@@ -18,8 +18,13 @@
 #' xVec <- seq(from = 1, to = 100, by = 0.1)
 #' gauss <- func_gaussian(x = xVec, mu = 10, sigma = 1, probDensity = FALSE, k = 10)
 #' gauss <- gauss + rnorm(n = length(gauss), mean = 0, sd = 1)
-#' fit <- fit_gaussian_optim(x = xVec, y = gauss, init_mu = 9, init_sigma = 0.5, init_k = 3, maxit = 1000)
-#' plot(x = xVec, y = gauss); points(x = xVec, y = fit$fitPeak, col = "red)
+#' fit <- fit_gaussian_optim(x = xVec,
+#'                           y = gauss,
+#'                           init_mu = 9,
+#'                           init_sigma = 0.5,
+#'                           init_k = 3,
+#'                           maxit = 1000)
+#' plot(x = xVec, y = gauss); points(x = xVec, y = fit$fitPeak, col = "red")
 #'
 fit_gaussian_optim <- function(x, y, init_mu, init_sigma, init_k, maxit = 1000){
   #Function to be optomized
@@ -44,11 +49,11 @@ fit_gaussian_optim <- function(x, y, init_mu, init_sigma, init_k, maxit = 1000){
   initial_par <- c("mu" = init_mu, "sigma" = init_sigma, "k" = init_k)
 
   #Do the fit
-  result <- optim(par = initial_par,
-                  fn = f,
-                  method = "L-BFGS-B",
-                  lower = c(0,0,0),
-                  control = list("maxit" = maxit))
+  result <- stats::optim(par = initial_par,
+                         fn = f,
+                         method = "L-BFGS-B",
+                         lower = c(0,0,0),
+                         control = list("maxit" = maxit))
 
   #Make the resutant peak
   peak <- func_gaussian(x = x,
