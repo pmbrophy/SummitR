@@ -4,30 +4,35 @@
 \alias{fit_nGaussian_ga}
 \title{Fit N-Gaussian Peaks Using genetic algorithm}
 \usage{
-fit_nGaussian_ga(x, y, init_mus, init_ks, constant_sigma, maxit = 1000)
+fit_nGaussian_ga(
+  x,
+  y,
+  init_mus,
+  init_ks,
+  init_sigmas,
+  lower_mus,
+  lower_ks,
+  lower_sigmas,
+  upper_mus,
+  upper_ks,
+  upper_sigmas,
+  maxit = 1000
+)
 }
 \arguments{
-\item{x}{values of the x-axis}
+\item{x}{values of the x-axis to be fit}
 
-\item{y}{values of the y-axis}
+\item{y}{values of the y-axis to be fit}
 
-\item{init_mus}{initial guess of mu (the peak center)}
+\item{init_mus}{initial guess of mu (the peak center) - either a single value to be applied globally or a value specifying each peak}
 
 \item{init_ks}{initial guess of k (the peak height)}
 
-\item{constant_sigma}{a constand value for sigma to be applied to each of the N-peaks}
-
-\item{maxit}{maximum number of iterations (default = 1000)}
+\item{maxit}{}
 }
 \value{
-a list containing a vector of y-values of the fitted peak called
-  `fitPeak` and a list named `optimResult` containing the results from
-  optim()
+
 }
 \description{
 Fit N-Gaussian Peaks Using genetic algorithm
-}
-\examples{
-xVec <- seq(from = 1, to = 100, by = 0.1)
-
 }
